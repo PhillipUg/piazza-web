@@ -25,7 +25,7 @@
           <%= link_to t(".my_ads"), "#",class: "navbar-item" %>
           <%= link_to t(".saved_ads"), "#", class: "navbar-item" %>
           <hr class="navbar-divider">
-          <%= link_to t(".logout"), "#", class: "navbar-item" %>
+          <%= link_to t(".logout"), logout_path, class: "navbar-item", data: { turbo_method: :delete } %>
         </div>
       <% end if logged_in? %>
 
