@@ -5,3 +5,12 @@ en:
       submit: "Sign up!"
     create:
       welcome: "Welcome to Piazza, %{name}!"
+    show:
+      save_profile: Save changes
+      your_details: Your details
+      change_password: Change your password
+      change_password_button: Change password
+      current_password: Current password
+      new_password: New password
+    update:
+      success: Your changes have been saved!

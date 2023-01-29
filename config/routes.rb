@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   get "login", to: 'sessions#new'
   post "login", to: 'sessions#create'
   delete "logout", to: 'sessions#destroy'
+
+  resource :profile, only: [:show, :update], controller: 'users'
+
+  namespace :users do
+    patch "change_password", to: "passwords#update"
+  end
 end

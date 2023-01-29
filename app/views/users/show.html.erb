@@ -1,0 +1,59 @@
+<% content_for :title, Current.user.name %>
+
+<%= turbo_frame_tag :user_details do %>
+  <layout-columns class="columns is-centered">
+    <layout-column class="column box is-5 mt-6 p-5 m4">
+      <h1 class="title has-text centered">
+        <%= t(".your-details") %>
+      </h1>
+
+      <%= form_with model: @user, url: profile_path, class: "is-flex is-flex-direction-column" do |form| %>
+        <div class="block">
+          <%= form.label :name, class: "label" %>
+          <%= form.text_field :name, class: "input" %>
+        </div>
+
+        <div class="block">
+          <%= form.label :email, class: "label" %>
+          <%= form.email_field :email, class: "input" %>
+        </div>
+
+        <%= form.submit t(".save_profile"), class: "button is-primary is-align-self-flex-end mb-3 mt-3" %>
+        <%= render "shared/flashes" if turbo_frame_request? %>
+        <%= turbo_stream.update :current_user_name do %>
+          <%= Current.user.name %>
+        <% end %>
+      <% end %>
+
+    </layout-column>
+  </layout-columns>
+<% end %>
+
+<%= turbo_frame_tag :change_password do %>
+  <layout-columns class="columns is-centered">
+    <layout-column class="column box is-5 mt-6 p-5 m-4">
+      <h1 class="title has-text-centered">
+        <%= t(".change_password") %>
+      </h1>
+      <%= form_with(model: @user, url: users_change_password_path, class: "is-flex is-flex-direction-column") do |form| %>
+        <div class="block">
+          <%= form.label :current_password, value: t(".current_password"), class: "label" %>
+          <%= form.password_field :current_password, class: "input" %>
+        </div>
+
+        <div class="block">
+          <%= form.label :password, value: t(".new_password"), class: "label" %>
+          <%= form.password_field :password, class: "input" %>
+        </div>
+
+        <div class="block">
+          <%= form.label :password_confirmation, value: t(".new_password"), class: "label" %>
+          <%= form.password_field :password_confirmation, class: "input" %>
+        </div>
+
+        <%= form.submit t(".change_password_button"), class: "button is-primary is-align-self-flex-end mb-3 mt-3" %>
+        <%= render "shared/flashes" if turbo_frame_request? %>
+      <% end %>
+    </layout-column>
+  </layout-columns>
+<% end %>
