@@ -24,8 +24,12 @@
         <%= form.password_field :password_confirmation, class: "input" %>
       </div>
 
-      <%= form.submit t(".submit"),
-                      class: "button is-primary is-large is-align-self-flex-end
-mb-3 mt-3" %> <% end %>
+      <%= form.submit t(".submit"), class: "button is-primary is-large is-align-self-flex-end mb-3 mt-3" %>
+    <% end %>
+
+    <%= tag.p class: "has-text-centered" do %>
+      <%= t(".login_message") %>
+      <%= link_to t(".login"), login_path %>
+    <% end if turbo_native_app? %>
   </layout-column>
 </layout-columns>

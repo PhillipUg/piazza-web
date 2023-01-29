@@ -3,6 +3,8 @@ en:
     new:
       title: "Sign up for Piazza"
       submit: "Sign up!"
+      login_message: Already got an account?
+      login: Login here.
     create:
       welcome: "Welcome to Piazza, %{name}!"
     show:

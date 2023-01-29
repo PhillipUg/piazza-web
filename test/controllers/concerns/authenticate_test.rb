@@ -2,6 +2,7 @@ require "test_helper"
 
 class AuthenticateTestsController < TestController
   include Authenticate
+  helper_method :turbo_native_app?
 
   skip_authentication only: %i[new create]
   allow_unauthenticated only: %i[show]
