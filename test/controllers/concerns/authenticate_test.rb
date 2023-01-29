@@ -33,6 +33,16 @@ class AuthenticateTest < ActionDispatch::IntegrationTest
     assert_match /authenticate_tests#edit/, response.body
   end
 
+  test "request authenticated by session gets valid response" do
+    @user.app_sessions.destroy_all
+    log_in(@user, remember_me: false)
+
+    get edit_authenticate_test_path
+
+    assert_response :ok
+    assert_match /authenticate_tests#edit/, response.body
+  end
+
   test "unauthenticated request renders login page" do
     get edit_authenticate_test_path
 
