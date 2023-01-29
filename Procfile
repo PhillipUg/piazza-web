@@ -1,0 +1,1 @@
+web: bundle exec rails s -b 192.168.1.2 -p 3000
